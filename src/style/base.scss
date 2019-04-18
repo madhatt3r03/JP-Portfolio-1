@@ -1,5 +1,10 @@
 body {
     margin: 0px;
-    font-family: 'Shadows Into Light', cursive;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
