@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { Component } from "react";
+import axios from "axios";
 
 export default class Login extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			email: '',
-			password: ''
+			email: "",
+			password: ""
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -17,14 +18,14 @@ export default class Login extends Component {
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value,
-			errorText: ''
+			errorText: ""
 		});
 	}
 
 	handleSubmit(event) {
 		axios
 			.post(
-				'https://api.devcamp.space/sessions',
+				"https://api.devcamp.space/sessions",
 				{
 					client: {
 						email: this.state.email,
@@ -34,18 +35,18 @@ export default class Login extends Component {
 				{ withCredentials: true }
 			)
 			.then((response) => {
-				if (response.data.status === 'created') {
+				if (response.data.status === "created") {
 					this.props.handleSuccessfulAuth();
 				} else {
 					this.setState({
-						errorText: 'Wrong email or password'
+						errorText: "Wrong email or password"
 					});
 					this.props.handleUnsuccessfulAuth();
 				}
 			})
 			.catch((error) => {
 				this.setState({
-					errorText: 'An error occurred'
+					errorText: "An error occurred"
 				});
 				this.props.handleUnsuccessfulAuth();
 			});
@@ -60,25 +61,29 @@ export default class Login extends Component {
 
 				<div>{this.state.errorText}</div>
 
-				<form onSubmit={this.handleSubmit}>
-					<input
-						type="email"
-						name="email"
-						placeholder="Your email"
-						value={this.state.email}
-						onChange={this.handleChange}
-					/>
-
-					<input
-						type="password"
-						name="password"
-						placeholder="Your password"
-						value={this.state.password}
-						onChange={this.handleChange}
-					/>
-
+				<form onSubmit={this.handleSubmit} className="auth-form-wrapper">
+					<div className="form-group">
+						<FontAwesomeIcon icon="envelope" />
+						<input
+							type="email"
+							name="email"
+							placeholder="Your email"
+							value={this.state.email}
+							onChange={this.handleChange}
+						/>
+					</div>
+					<div className="form-group">
+						<FontAwesomeIcon icon="lock" />
+						<input
+							type="password"
+							name="password"
+							placeholder="Your password"
+							value={this.state.password}
+							onChange={this.handleChange}
+						/>
+					</div>
 					<div>
-						<button type="submit">Login</button>
+						<button className="btn" type="submit">Login</button>
 					</div>
 				</form>
 			</div>

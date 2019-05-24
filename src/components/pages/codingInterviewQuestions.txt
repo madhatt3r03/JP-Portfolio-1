@@ -1,0 +1,36 @@
+code notes
+// We need to call the constructor and super to use "this.state" and and to bind the initial state with
+	// "this.setState" to change that initial value(this.state)
+
+    
+
+        // axios is used here to communicate with the API to grab the items from devcamp.space, using withCredentials
+				// to verify the authorized user
+
+                // then is used to receive the items after getting a "response" from calling the API
+
+                // catch is used to "catch" any errors if there are any from our request.
+
+                // still researching componentDidMount and lifecycle methods, keep researching until makes sense.
+
+                {/* so data is a prop passed into PortfolioSidebarList. It takes in the initial state(this.state) of 
+                    portfolioItems and populates it when we call get portfolioItems using axios and we pass that 
+                    to props(data)   */}
+
+                    app.js code notes
+
+                    // If loggedIn and status LOGGED_IN => return data
+				// If loggedIn status NOT_LOGGED_IN => update state
+				// If not loggedIn and status LOGGED_IN => update state
+
+                // returning an array of pages only accessible by logged in users(protecting the routes!(Route Guard))
+
+                // this Logout prop (up above) is called to update the loggedInStatus back to the initial state of NOT_LOGGED_IN
+
+                {/* these are routes for each component link on the page
+
+Coding Interview Questions
+What is Synthetic Event? 
+Has to do with the DOM (Document Model Object) which exists on a normal HTML webpage. Then there's a virtual DOM
+that exists only in React, since React technically doesn't work with the normal DOM. The virtual DOM creates these
+Synthetic Events in place of normal Events from a regular HTML page...
